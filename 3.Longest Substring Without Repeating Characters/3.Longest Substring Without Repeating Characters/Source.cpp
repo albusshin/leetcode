@@ -22,7 +22,7 @@ public:
 			else
 			{
 				max = max > hm.size() ? max : hm.size();
-				int end = hm[s[j]] + 1;
+				int end = hm[s[j]];
 				for (int k=i; k!=end; k++)
 				{
 					hm.erase(s[k]);
