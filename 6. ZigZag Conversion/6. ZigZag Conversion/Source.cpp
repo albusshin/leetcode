@@ -8,7 +8,7 @@ using namespace std;
 class Solution {
 public:
     string convert(string s, int nRows) {
-		if (s.size() == 0)
+		if (s.size() == 0 || nRows == 1)
 		{
 			return s;
 		}
@@ -24,7 +24,7 @@ public:
 			{
 				i++;
 				zz[i].push_back(s[k]);
-				if (i == nRows) down = false;
+				if (i == (nRows-1)) down = false;
 			}
 			else
 			{
@@ -36,7 +36,7 @@ public:
 		stringstream sstr;
 		for (vector<vector<char>>::iterator ite = zz.begin(); ite!=zz.end(); ite++)
 		{
-			sstr << string(*ite->begin(), *ite->end());
+			sstr << string(ite->begin(), ite->end());
 		}
 		sstr >> ret;
 		return ret;
@@ -46,6 +46,6 @@ public:
 void main()
 {
 	Solution ss;
-	string res = ss.convert("PAYPALISHIRING", 3);
+	string res = ss.convert("AB", 1);
 	cout << res;
 }
