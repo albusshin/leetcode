@@ -8,10 +8,11 @@ public:
 		set<int> s;
 		for (int i=0; i<n; i++)
 		{
-			if (s.find(i) == s.end())
-				s.insert(i);
+			int e = A[i];
+			if (s.find(e) == s.end())
+				s.insert(e);
 			else
-				s.erase(i);
+				s.erase(e);
 		}
 		return *(s.begin());
     }
