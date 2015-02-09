@@ -1,5 +1,3 @@
-#include <vector>
-
 //Definition for singly-linked list.
 struct ListNode {
     int val;
@@ -10,18 +8,17 @@ struct ListNode {
 using namespace std;
 
 class Solution {
-private:
-	vector<ListNode*> ps;
 public:
     bool hasCycle(ListNode *head) {
-        if (head == NULL) return false;
-        if (head->next == NULL) return false;
-        ListNode *p = head->next;
-		while (find(ps.begin(), ps.end(), p) == ps.end()) {
-			ps.push_back(p);
-            if (p->next == NULL) return false;
-            else p = p->next;
-        }
-        return true;
+		if (!head) return false;
+		ListNode *p1 = head, *p2 = head;
+		while (true) {
+			if (!(p2 && p2->next)) return false;
+			p1 = p1->next;
+			p2 = p2->next->next;
+			if (p1 == p2) {
+				return true;
+			}
+		}
     }
 };
