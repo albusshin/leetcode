@@ -1,5 +1,6 @@
-#include <string.h>
 #include <ctype.h>
+
+using namespace std;
 
 class Solution {
 private:
@@ -16,7 +17,7 @@ public:
 		}
 		return false;
 	}
-	bool is0To9(char c) {
+	bool is1To9(char c) {
 		for (int i=1; i<10; i++) {
 			if (digits[i] == c) return true;
 		}
@@ -28,28 +29,46 @@ public:
     bool isNumber(const char *s) {
 		p = (char*)s;
 		advanceWhiteSpace();
-		if (*p == '-') p++;
-		if (is0To9(*p)) {
-			while (is0To9(*p)) p++; 
+		if (*p == '-' || *p == '+') p++;
+
+		if (is1To9(*p)) {
+			while (isDigit(*p)) p++; 
+			if (*p == '.') {
+				p++;
+				if (!(*p == 'e' || isDigit(*p) || *p == NULL || isspace(*p))) return false;
+			}
 		}
-		else if (*p == '0') p++;
+		else if (*p == '0') {
+			p++;
+			if (*p == 'x' || *p == 'X') {
+				p++;
+				if (!(*p == 'e' || isDigit(*p))) return false;
+			}
+			while (isDigit(*p)) p++;
+			if (*p == '.') {
+				p++;
+				if (!(*p == 'e' || isDigit(*p) || *p == NULL || isspace(*p))) return false;
+			}
+		}
+		else if (*p == '.') {
+			p++;
+			if (!(isDigit(*p))) return false;
+		}
 		else return false;
-		if (*p == '.') p++;
+
 		if (isDigit(*p)) {
 			while (isDigit(*p)) p++;
 		}
-		if (*p == 'e' || *p == 'E') p++;
-		if (*p == '+' || *p == '-') p++;
-		if (isDigit(*p)) {
-			while (isDigit(*p)) p++;
+		if (*p == 'e' || *p == 'E') {
+			p++;
+	    	if (*p == '+' || *p == '-') p++;
+	    	if (isDigit(*p)) {
+	    		while (isDigit(*p)) p++;
+	    	}
+			else return false;
 		}
 		advanceWhiteSpace();
 		if (*p == NULL) return true;
 		else return false;
     }
 };
-
-void main() {
-	Solution s;
-
-}
