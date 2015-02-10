@@ -1,4 +1,5 @@
 #include <string.h>
+#include <ctype.h>
 
 class Solution {
 private:
@@ -21,8 +22,12 @@ public:
 		}
 		return false;
 	}
+	char* advanceWhiteSpace() {
+		while (isspace(*p)) p++;
+	}
     bool isNumber(const char *s) {
 		p = (char*)s;
+		advanceWhiteSpace();
 		if (*p == '-') p++;
 		if (is0To9(*p)) {
 			while (is0To9(*p)) p++; 
@@ -38,6 +43,7 @@ public:
 		if (isDigit(*p)) {
 			while (isDigit(*p)) p++;
 		}
+		advanceWhiteSpace();
 		if (*p == NULL) return true;
 		else return false;
     }
