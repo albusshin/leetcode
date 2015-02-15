@@ -26,7 +26,6 @@ public:
 		left++; right--;
         if (secondMax > max) 
 			ret = s.substr(left, right - left + 1);
-		cout << max << " " << secondMax << " " << ret << endl;
         return ret;
         
     }
@@ -39,9 +38,3 @@ public:
         return ret;
     }
 };
-
-void main() {
-	Solution sol;
-	string s = sol.longestPalindrome("bb");
-	cout << s << endl;
-}
