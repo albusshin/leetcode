@@ -11,7 +11,7 @@ public:
         while (left >= 0 && right < s.length() && s[left] == s[right]) {
             left--;
             right++;
-            max++;
+            max += 2;
         }
 		left++; right--;
         string ret = s.substr(left, right - left + 1);
@@ -21,11 +21,12 @@ public:
         while (left >= 0 && right < s.length() && s[left] == s[right]) {
             left--;
             right++;
-            secondMax++;
+            secondMax += 2;
         }
 		left++; right--;
         if (secondMax > max) 
 			ret = s.substr(left, right - left + 1);
+		cout << max << " " << secondMax << " " << ret << endl;
         return ret;
         
     }
@@ -41,6 +42,6 @@ public:
 
 void main() {
 	Solution sol;
-	string s = sol.longestPalindrome("abcbe");
+	string s = sol.longestPalindrome("bb");
 	cout << s << endl;
 }
