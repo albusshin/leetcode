@@ -19,12 +19,12 @@ public:
 				stk.pop();
 				auto ite = v.begin();
 				for (; ite != v.end(); ++ite) {
-					if (ite->second == pci.second - 1) {
+					if (ite->second == pci.second - 1) { //merge
 						ite->first += i - pci.second + 1;
 						ite->second = i;
 					};
 				}
-				if (ite == v.end()) {
+				if (ite == v.end()) { //immediate valid form prefix not found
 					v.push_back(make_pair(i - pci.second + 1, i));
 				}
 			}
