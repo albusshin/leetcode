@@ -26,7 +26,7 @@ public:
             return;
         }
         vector<int> vi;
-        if (level + 1 > vi.size()) vvi.push_back(vi);
+        if (level + 1 > vvi.size()) vvi.push_back(vi);
         vvi[level].push_back(root->val);
         recur(root->left);
         recur(root->right);
