@@ -12,9 +12,12 @@ class Solution {
     vector<vector<int>> vvi;
 public:
     Solution() : level(-1) {};
-    vector<vector<int>> levelOrder(TreeNode *root) {
+    vector<vector<int>> levelOrderBottom(TreeNode *root) {
+        vector<vector<int>> ret;
         recur(root);
-        return vvi;
+        for (auto rite = vvi.rbegin(); rite != vvi.rend(); ++rite)
+            ret.push_back(*rite);
+        return ret;
     }
     void recur(TreeNode *root) {
         level++;
