@@ -12,8 +12,6 @@ public:
 			return str1 < str2;
 		});
 
-		for (auto i : num) cout << i << " ";
-		cout << endl;
 		stringstream ss;
 		for (auto rite = num.rbegin(); rite != num.rend(); ++rite) {
 			ss << (*rite);
